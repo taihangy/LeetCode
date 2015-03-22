@@ -12,6 +12,7 @@
 public class IntersectionofTwoLinkedLists{
 	public ListNode getIntersectionNode(ListNode headA,ListNode headB){
 		if(headA==null||headB==null) return null;
+		//保有两个头指针，遍历list，如果相同则返回，不相同，较小的listNode++
 		ListNode a=headA;
 		ListNode b=headB;
 		while(a!=null&&b!=null){

@@ -8,11 +8,11 @@ public class PlusOne{
 			int digit=(digits[i]+carry)%10;
 			carry=(digits[i]+carry)/10;
 			digits[i]=digit;
-			if(carry==0)
+			if(carry==0)		//carry一旦为0即可停止进位
 				return digits;
 		}
-		int[] res=new int[len+1];
-		res[0]=1;
+		int[] res=new int[len+1]; //如果最高位依旧要依旧要进位，即999...999
+		res[0]=1;				//设置新的最高位为1
 		return res;
 	}
 	public static void main(String args[]){
