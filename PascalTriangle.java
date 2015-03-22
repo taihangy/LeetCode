@@ -6,6 +6,7 @@ public class PascalTriangle{
 		list.add(1);
 		retlist.add(list);
 		if(numRows==1) return retlist;
+		//numRows从2开始
 		for(int i=1;i<numRows;i++){
 			ArrayList<Integer> newlist=new ArrayList<Integer>();
 			newlist.add(1);
