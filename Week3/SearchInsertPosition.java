@@ -1,4 +1,5 @@
 public class SearchInsertPosition{
+    //就是binary search
 	public int searchInsert(int[] A, int target) {
         int index=-1;
         if(A==null||A.length==0) return index;

@@ -1,5 +1,6 @@
 public class Triangle{
-	//shortest path in DAG的变种
+	//shortest path in DAG的变种,动态规划解法，第二遍看
+    //http://blog.csdn.net/linhuanmars/article/details/23230657
 	public int minimumTotal(List<List<Integer>> triangle) {
         if(triangle==null) return 0;
         if(triangle.size()==1) return triangle.get(0).get(0);

@@ -8,6 +8,7 @@ public class UniquePaths2{
     }
     public int helper(int row,int col,int m,int n,int[][] obstacleGrid){
         if(row==m&&col==n) return 1;
+        //当遇到障碍，或者走出去了，返回0
         if(row>m||col>n||obstacleGrid[row-1][col-1]==1) return 0;
         return helper(row+1,col,m,n,obstacleGrid)+helper(row,col+1,m,n,obstacleGrid);
     }
@@ -24,6 +25,7 @@ public class UniquePaths2{
             for(int j=0;j<n;j++){
                 if(obstacleGrid[i][j]==1) res[j]=0;
                 else {
+                    //注意第一列是没有从左边走来的，也就是说要么一直有1种，要么遇到障碍变为0，以后都为0
                     if(j>0)
                         res[j]+=res[j-1];
                 }

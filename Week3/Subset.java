@@ -1,4 +1,5 @@
 public class Subset{
+    //非递归解法，每一次新加一个元素，在原有所有的子集中添加元素，再将新的子集加入其中
 	public List<List<Integer>> subsets(int[] S){
 		ArrayList<List<Integer>> res=new ArrayList<List<Integer>>();
 		res.add(new ArrayList<Integer>());
@@ -16,6 +17,7 @@ public class Subset{
 		return res;
 	}
 
+    //递归解法，思路与非递归类似，注意递归出口加入空集
 	public List<List<Integer>> subsets(int[] num) {
         if(num==null)
             return null;
