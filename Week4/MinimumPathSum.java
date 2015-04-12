@@ -1,4 +1,5 @@
 public class MinimumPathSum{
+    //应该也算动态规划问题，当前的值等于当前行前一列的值加上当前列上一行的值
 	public int minPathSum(int[][] grid) {
         if(grid==null||grid.length==0||grid[0].length==0) return 0;
         for(int i=0;i<grid.length;i++){

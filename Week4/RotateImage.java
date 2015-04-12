@@ -1,4 +1,5 @@
 public class RotateImage{
+    //使用extra space是可以实现的，但多用了空间O(n*n)
     public void rotate(int[][] matrix) {
         if(matrix==null||matrix.length==0) return;
         int n=matrix.length;
@@ -11,6 +12,7 @@ public class RotateImage{
                 matrix[j][n-1-i]=copy[i][j];
     }
 
+    //不用多余的空间，则要在每层上进行变化，用一个temp暂时存，然后4条边逐一交换，空间复杂度O(1)，时间复杂度O(N*N)
     public void rotate(int[][] matrix){
         if(matrix==null||matrix.length==0) return;
         int n=matrix.length;;

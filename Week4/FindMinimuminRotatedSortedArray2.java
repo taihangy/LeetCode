@@ -12,6 +12,8 @@ public class FindMinimuminRotatedSortedArray2{
                 min=Math.min(min,num[lo]);
                 lo=mid+1;
             }else{
+                //这种情况其实包括了两种，一种是mid!=lo，lo++后继续判断
+                //另一种是mid==lo，因此也要lo++
                 min=Math.min(min,num[lo]);
                 lo++;
             }

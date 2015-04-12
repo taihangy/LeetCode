@@ -8,8 +8,10 @@
  * }
  */
 public class ConstructBinaryTreefromInorderandPostorderTraversal {
+    //postorder的每个subtree的最后一位是r该subtree的root
     public TreeNode buildTree(int[] inorder, int[] postorder) {
         if(inorder==null||postorder==null||inorder.length!=postorder.length) return null;
+        //更方便查找index，可以将root对应的inorder的index找出来避免时间上O(n)的search，取代的是空间O(n)
         HashMap<Integer,Integer> map=new HashMap<Integer,Integer>();
         for(int i=0;i<inorder.length;i++){
             map.put(inorder[i],i);

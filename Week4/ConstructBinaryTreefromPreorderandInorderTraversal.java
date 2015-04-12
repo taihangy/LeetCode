@@ -1,6 +1,8 @@
 public class ConstructBinaryTreefromPreorderandInorderTraversal {
+    //preorder和postorder相反，每个subtree的第一个是root，每次找到root去迭代构建tree
 	public TreeNode buildTree(int[] preorder, int[] inorder) {
         if(preorder==null||inorder==null||preorder.length!=inorder.length) return null;
+        //这里注意点和postorder那题是一样的，为了找到对应root在inorder中的index，构建map，以空间换时间
         HashMap<Integer,Integer> map=new HashMap<Integer,Integer>();
         for(int i=0;i<inorder.length;i++){
             map.put(inorder[i],i);

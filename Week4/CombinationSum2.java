@@ -1,4 +1,5 @@
 public class CombinationSum2{
+    //和CombinationSum类似
 	public List<List<Integer>> combinationSum2(int[] num, int target) {
         ArrayList<List<Integer>> res=new ArrayList<List<Integer>>();
         if(num==null||num.length==0) return res;
@@ -14,6 +15,7 @@ public class CombinationSum2{
         for(int i=start;i<num.length;i++){
             if(i>start&&num[i]==num[i-1]) continue;
             item.add(num[i]);
+            //注意不能出现duplicate加要i+1
             helper(num,target-num[i],res,item,i+1);
             item.remove(item.size()-1);
             if(target==num[i]) break;
