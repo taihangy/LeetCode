@@ -1,4 +1,5 @@
 public class 4Sum{
+    //思路和3Sum一样
 	public List<List<Integer>> fourSum(int[] num, int target) {
         ArrayList<List<Integer>> res=new ArrayList<List<Integer>>();
         HashSet<List<Integer>> set=new HashSet<List<Integer>>();

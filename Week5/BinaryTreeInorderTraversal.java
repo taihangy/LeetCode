@@ -1,4 +1,5 @@
 public class BinaryTreeInorderTraversal{
+    //没什么好说的，就是递归
 	public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> list=new ArrayList<Integer>();
         if(root==null) return list;

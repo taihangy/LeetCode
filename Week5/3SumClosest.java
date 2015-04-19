@@ -2,6 +2,7 @@ public calss 3SumClosest{
 	public int threeSumClosest(int[] num, int target) {
         if(num==null||num.length==0) return 0;
         Arrays.sort(num);
+        //持有一个close，每次算一下，就可以找出close，时间复杂度O(n^3)，空间复杂度O(1)
         int close=num[0]+num[1]+num[2];
         for(int i=0;i<num.length-2;i++){
             int a=num[i];
