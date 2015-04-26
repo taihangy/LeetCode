@@ -16,6 +16,7 @@
  * }
  */
 public class ConvertSortedListtoBinarySearchTree {
+    //每次取中点为root，时间O(longn),空间O(n)存放node
     public TreeNode sortedListToBST(ListNode head) {
         if(head==null) return null;
         ArrayList<ListNode> list=new ArrayList<ListNode>();

@@ -1,4 +1,5 @@
 public class IntegertoRoman{
+	//这就是每个位上的数字用对应的1-9怎么表示的问题
 	public String intToRoman(int num){
 		if(n<1||n>3999) return "";
 		ArrayList<Integer> digits=new ArrayList<Integer>();

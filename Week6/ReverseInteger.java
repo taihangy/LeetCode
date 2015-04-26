@@ -1,4 +1,5 @@
 public class ReverseInteger{
+    //和数有关的要注意越界和正负问题
 	public int reverse(int x1) {
         long x=(long)x1;
         boolean flag=true;

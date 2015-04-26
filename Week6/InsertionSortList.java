@@ -10,6 +10,7 @@
  * }
  */
 public class InsertionSortList {
+    //Insertion sort，保有两个变量，空间O(1)，平均在时间O(n^2/4)
     public ListNode insertionSortList(ListNode head) {
         if(head==null||head.next==null) return head;
         ListNode helper=new ListNode(0);

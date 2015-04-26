@@ -1,4 +1,5 @@
 public class AddTwoNumbers{
+    //就是加法的正常思路
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if(l1==null&&l2==null) return null;
         if(l1==null) return l2;

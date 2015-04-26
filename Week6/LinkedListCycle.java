@@ -1,4 +1,5 @@
 public class LinkedListCycle{
+    //使用O(n)多余空间保存node
 	public boolean hasCycle(ListNode head) {
         if(head==null||head.next==null) return false;
         ListNode cur=head;
@@ -10,6 +11,7 @@ public class LinkedListCycle{
         return false;
     }
 
+    //两指针大法，一个走两步，一个一步肯定是能遇到的
     public boolean hasCycle(ListNode head){
     	if(head==null||head.next==null) return false;
     	ListNode walker=head;

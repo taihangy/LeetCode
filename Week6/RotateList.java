@@ -1,4 +1,6 @@
 public class RotateList{
+  //思路很清晰，先找到end,以及count，然后算要移多少step，然后找到要编程头结点的node，指针操作
+  //时间O(2n)，空间O(1)
 	public ListNode rotateRight(ListNode head, int k) {
        if(head==null||head.next==null) return head;
        ListNode helper=new ListNode(0);

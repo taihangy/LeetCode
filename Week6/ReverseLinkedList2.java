@@ -1,4 +1,5 @@
 public class ReverseLinkedList2 {
+    //指针题，一般仔细就好了
 	public ListNode reverseBetween(ListNode head, int m, int n) {
         if(head==null) return null;
         ListNode helper=new ListNode(0);
@@ -24,6 +25,7 @@ public class ReverseLinkedList2 {
         return helper.next;
     }
 
+    //时间O(n),空间O(1)
     public ListNode reverseBetween(ListNode head, int m, int n) {
         if(head==null) return null;
         ListNode helper=new ListNode(0);

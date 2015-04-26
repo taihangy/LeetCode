@@ -47,6 +47,8 @@ public class PartitionList{
         return helper.next;
     }
 
+    //两指针，runner遇到小于x的都接到walker后，除非walker=runner
+    //大于等于x的不动
     public ListNode partition(ListNode head, int x) {
         if(head==null||head.next==null) return head;
         ListNode helper=new ListNode(0);
