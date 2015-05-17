@@ -1,6 +1,8 @@
 public class Solution {
+    //time O(n), space O(1)
     public int minSubArrayLen(int s, int[] nums) {
         if(nums==null) return 0;
+        //check if sum all numbers in nums is smaller than s
         int all=0;
         int sum=0;
         int pre=0;

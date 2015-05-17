@@ -2,19 +2,22 @@ public class Solution {
     private boolean[] marked;
     private boolean[] onStack;
     private boolean cycle;
+    //DAG 
     private LinkedList<Integer> reversePost;
     
     public int[] findOrder(int numCourses, int[][] prerequisites) {
-        
+        //construct graph
         Digraph G=new Digraph(numCourses);
         for(int i=0;i<prerequisites.length;i++)
         	for(int j=0;j<prerequisites[0].length;j+=2){
                 G.addEdge(prerequisites[i][j+1],prerequisites[i][j]);
             }
+        //initial 
         marked=new boolean[G.V()];
         onStack=new boolean[G.V()];
         reversePost=new LinkedList<Integer>();
         
+        //dectect if it has a cycle
         for(int v=0;v<G.V();v++){
             if(!marked[v]) dfs(G,v);
             if(hasCycle()) break;
@@ -31,15 +34,18 @@ public class Solution {
             else if(!marked[w]){
                 dfs(G,w);
             }else if(onStack[w]){
+            //if it is already on stack, means that it has a cycle
                 cycle=true;
                 break;
             }
         }
+        //push done vertices onto stack, so its order can be reverse when it pops out.
         if(!reversePost.contains(v))
         	reversePost.push(v);
         onStack[v]=false;
     }
     
+    //return int[] by poping reversePost
     private int[] path(int numCourses){
         if(hasCycle()) {
             int[] res={};
@@ -53,6 +59,7 @@ public class Solution {
         return res;
     }
     
+    //helper functions
     public boolean hasCycle(){
         return cycle;
     }

@@ -22,6 +22,7 @@ public class Trie {
         root=insert(root,word,1,0);
     }
     
+    //insert word along with val=1 to jugde whether it is a word or not
     private TrieNode insert(TrieNode x,String word,int val,int d){
         if(x==null) x=new TrieNode();
         if(d==word.length()){

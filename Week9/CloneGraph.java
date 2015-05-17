@@ -6,7 +6,9 @@
  *     UndirectedGraphNode(int x) { label = x; neighbors = new ArrayList<UndirectedGraphNode>(); }
  * };
  */
+
 public class Solution {
+    //dfs recursive
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         if(node==null) return null;
         HashMap<UndirectedGraphNode,UndirectedGraphNode> map=new HashMap<UndirectedGraphNode,UndirectedGraphNode>();
@@ -28,6 +30,7 @@ public class Solution {
         }
     }
 
+    //bfs iterated version
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         if(node==null) return null;
         HashMap<UndirectedGraphNode,UndirectedGraphNode> map=new HashMap<UndirectedGraphNode,UndirectedGraphNode>();
@@ -49,6 +52,7 @@ public class Solution {
         return map.get(node);
     }
 
+    //dfs iterated version
     public UndirectedGraphNode cloneGraph(UndirectedGraphNode node) {
         if(node==null) return null;
         HashMap<UndirectedGraphNode,UndirectedGraphNode> map=new HashMap<UndirectedGraphNode,UndirectedGraphNode>();

@@ -7,6 +7,7 @@ public class Solution {
             return;
         int row=board.length;
         int col=board[0].length;
+        // handle edges first, because it will contains 'O',which contact with edge 'O' will also stay.
         for(int i=0;i<row;i++){
             bfs(board,i,0);
             bfs(board,i,col-1);
@@ -30,7 +31,9 @@ public class Solution {
     }
     
     private void bfs(char[][] board, int i,int j){
-        if(board[i][j]=='X') return;
+        //vertice which is not 'O' includes 'T' means it is 'O' but traveled, 'F' means it is 'O' but freed
+        // and 'X' means it is 'X' which we will not visit because there is no change to make
+        if(board[i][j]!='O') return;
         
         LinkedList<Node> queue=new LinkedList<Node>();
         queue.offer(new Node(i,j));
@@ -59,6 +62,7 @@ public class Solution {
             int x=cur.i+directionX[i];
             int y=cur.j+directionY[i];
             if(x>=0&&x<board.length&&y>=0&&y<board[0].length&&board[x][y]=='O'){
+                //all vertices which is 'O' will traveled once to save time
                 board[x][y]='T';
                 expansion.add(new Node(x,y));
             }
@@ -79,7 +83,7 @@ public class Solution {
         this.row=board.length;
         this.col=board[0].length;
         this.queue=new LinkedList<Integer>();
-        
+        //start with edges to percolate inside it is more nature
         for(int i=0;i<row;i++){
             enqueue(i,0);
             enqueue(i,col-1);
@@ -89,6 +93,7 @@ public class Solution {
             enqueue(row-1,j);
         }
         
+        //percolate inside which board box is 'O'
         while(!queue.isEmpty()){
             int cur=queue.poll();
             int x=cur/col;

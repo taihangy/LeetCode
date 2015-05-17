@@ -2,6 +2,7 @@ public class Solution {
     public int ladderLength(String beginWord, String endWord, Set<String> wordDict) {
         if(beginWord==null||endWord==null||beginWord.length()==0||endWord.length()==0||wordDict==null) return 0;
         int level=1;
+        //every level's word nums
         int lastlevelnum=1;
         int curlevelnum=0;
         LinkedList<String> queue=new LinkedList<String>();
