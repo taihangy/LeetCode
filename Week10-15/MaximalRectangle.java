@@ -1,4 +1,6 @@
 public class Solution {
+    //按照柱状图最大矩形的思路做，每次遍历矩阵的一行，算最大矩阵，当某一行元素为0时，则height为0
+    //时间复杂度O(m*n),空间复杂度O(n)
     public int maximalRectangle(char[][] matrix) {
         if(matrix==null||matrix.length==0||matrix[0].length==0) return 0;
         int maxRect=0;
@@ -12,6 +14,7 @@ public class Solution {
         return maxRect;
     }
     private int largestRect(int[] height){
+        //和LargestRectangleinHistogram一样，维护一个数组，当遇到小于栈顶的时候出栈，计算每个出栈的可能的最大矩阵
         if(height==null||height.length==0) return 0;
         LinkedList<Integer> stack=new LinkedList<Integer>();
         int max=0;

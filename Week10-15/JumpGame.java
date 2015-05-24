@@ -1,4 +1,5 @@
 public class Solution {
+	//空间O(1)，时间复杂度O(N)
     public boolean canJump(int[] nums) {
         if(nums==null||nums.length==0) return false;
         int reach=0;

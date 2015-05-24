@@ -1,4 +1,5 @@
 public class Solution {
+    //这样的题，就是用HashMap，保存词与对于个数，然后去遍历，每次减去最左边重复或是应该要删去（继续下一步）的词
     public List<Integer> findSubstring(String s, String[] words) {
         List<Integer> res=new ArrayList<Integer>();
         if(words==null||words.length==0) return res;

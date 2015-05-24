@@ -1,4 +1,5 @@
 public class Solution {
+    //替换性，时间复杂度O(s.length()),空间也相同，用到了map
     public boolean isIsomorphic(String s, String t) {
         if(s==null||t==null) return false;
         HashMap<Character,Character> map=new HashMap<Character,Character>();

@@ -8,6 +8,7 @@
  * }
  */
 public class Solution {
+    //和merge interval一样，直接将要插入的先插入intervals中
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
         if(intervals==null) {
             intervals=new ArrayList<Interval>();

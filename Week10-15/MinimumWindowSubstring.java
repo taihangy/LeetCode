@@ -1,4 +1,8 @@
 public class Solution {
+    //构建一个hashmap，保存目标字符串中每个字符有几个
+    //保存含有所有目标字符的substring的left边，保存最小长度与起始位置
+    //减去左边无关的字符与第一个目标字符串包含的任意字符，并继续
+    //空间复杂度O(num of character)，时间复杂度O(t.length()+s.length()^2)
     public String minWindow(String s, String t) {
         if(t==null||t.length()==0&&s!=null) return "";
         if(s==null||s.length()<t.length()) return "";

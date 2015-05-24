@@ -7,6 +7,7 @@
  * }
  */
 public class Solution {
+    //多用空间O(n)，时间O(n)
     public ListNode reverseList(ListNode head) {
         if(head==null) return null;
         LinkedList<ListNode> stack=new LinkedList<ListNode>();
@@ -24,6 +25,7 @@ public class Solution {
         return newHead;
     }
 
+    //自己的版本
     public ListNode reverseList(ListNode head) {
         if(head==null||head.next==null) return head;
         ListNode last=null;
@@ -46,6 +48,7 @@ public class Solution {
         return next;
     }
 
+    //不同recursive
     public ListNode reverseList(ListNode head) {
         if(head==null||head.next==null) return head;
         ListNode pre=null;
@@ -58,6 +61,7 @@ public class Solution {
         return pre;
     }
 
+    //recursive
     public ListNode reverseList(ListNode head) {
         if(head==null||head.next==null) return head;
         return helper(head,null);

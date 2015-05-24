@@ -1,4 +1,5 @@
 public class Solution {
+    //每一个都去尝试，是否可行，空间复杂度为栈的大小
     public void solveSudoku(char[][] board) {
         if(board==null||board.length!=9||board[0].length!=9) return;
         helper(board,0,0);

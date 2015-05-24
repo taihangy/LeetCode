@@ -7,6 +7,8 @@
  * }
  */
 public class Solution {
+    //保存pre，cur和next,注意要先统计size，这样最后剩余就不用处理处理
+    //空间复杂度O(1),时间复杂度O(2n不到)=O(n)
     public ListNode reverseKGroup(ListNode head, int k) {
         if(head==null) return head;
         ListNode cur=head;

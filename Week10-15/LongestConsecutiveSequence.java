@@ -1,4 +1,5 @@
 public class Solution {
+    //空间复杂度O(n),时间复杂度O(n),因为不会有两个链都接到一个上，每个元素最多访问一次
     public int longestConsecutive(int[] nums) {
         if(nums==null||nums.length==0) return 0;
         int maxLen=1;
