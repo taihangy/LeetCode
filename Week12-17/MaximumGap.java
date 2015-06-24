@@ -1,4 +1,5 @@
 public class Solution {
+    //buckets sort
     public int maximumGap(int[] nums) {
         if(nums==null||nums.length<2) return 0;
         return sort(nums);
@@ -32,6 +33,8 @@ public class Solution {
         return res;
     }
 
+
+    // 3 way quick sort version (improved MSD)
     public int maximumGap(int[] nums) {
         if(nums==null||nums.length<2) return 0;
         sort(nums,0,nums.length-1,1);
@@ -65,7 +68,41 @@ public class Solution {
     }
 
     private static int numAtD(int num,int d){
-        int mask=(((1<<31)>>31)>>>24)<<((4-d)*8);
-        return num&mask;
+        int mask=((1<<31)>>31)>>>24;
+        return (num>>(4-d)*8)&mask;
+    }
+
+
+    // LSD version
+    public int maximumGap(int[] nums) {
+        if(nums==null||nums.length<2) return 0;
+        sort(nums,4);
+        int max=0;
+        for(int i=1;i<nums.length;i++){
+            if(nums[i]-nums[i-1]>max) max=nums[i]-nums[i-1];
+        }
+        return max;
+    }
+    
+    private static void sort(int[] nums,int W){
+        int N=nums.length;
+        int R=256;
+        int[] aux=new int[N];
+        for(int d=W;d>=1;d--){
+            int[] count=new int[R+1];
+            for(int i=0;i<N;i++)
+                count[numAtD(nums[i],d)+1]++;
+            for(int r=0;r<R;r++)
+                count[r+1]+=count[r];
+            for(int i=0;i<N;i++)
+                aux[count[numAtD(nums[i],d)]++]=nums[i];
+            for(int i=0;i<N;i++)
+                nums[i]=aux[i];
+        }
+    }
+
+    private static int numAtD(int num,int d){
+        int mask=((1<<31)>>31)>>>24;
+        return (num>>>(4-d)*8)&mask;
     }
 }
