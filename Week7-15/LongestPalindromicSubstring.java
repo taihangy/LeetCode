@@ -8,7 +8,7 @@ public class LongestPalindromicSubstring{
 			int left=i/2;
 			int right=i/2;
 			if(i%2==1) right++;
-			Stringtring palin=palindrome(s,left,right);
+			String palin=palindrome(s,left,right);
 			if(maxLen<palin.length()){
 				res=palin;
 				maxLen=palin.length();

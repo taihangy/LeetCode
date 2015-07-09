@@ -1,5 +1,5 @@
 public class WordBreak2{
-	//brute froce
+	//brute froce 时间复杂度太高，当所有都是一样的时候
 	public List<String> wordBreak(String s, Set<String> wordDict) {
         List<String> res=new ArrayList<String>();
         if(s==null||s.length()==0||wordDict.isEmpty()) return res;
@@ -19,6 +19,34 @@ public class WordBreak2{
                 helper(s,wordDict,i+1,newItem,res);
             }
         }
+    }
+
+    public ArrayList<String> wordBreak(String s, Set<String> dict) {
+        if(s==null||s.length()==0||dict.isEmpty()) return new ArrayList<String>();
+        Map<String,ArrayList<String>> map=new HashMap<String,ArrayList<String>>();
+        return helper(s,dict,map);
+    }
+    private ArrayList<String> helper(String s,Set<String> dict,Map<String,ArrayList<String>> map){
+        if(map.containsKey(s)) return map.get(s);
+        ArrayList<String> res=new ArrayList<String>();
+        for(int len=1;len<=s.length();len++){
+            String str=s.substring(0,len);
+            if(dict.contains(str)){
+                if(len==s.length()){
+                    res.add(str);
+                }
+                else{
+                    String sub=s.substring(len);
+                    ArrayList<String> temp=helper(sub,dict,map);
+                    for(String item:temp){
+                        item=str+" "+item;
+                        res.add(item);
+                    }
+                }
+            }
+        }
+        map.put(s,res);
+        return res;
     }
     //DP version figure out later
 }

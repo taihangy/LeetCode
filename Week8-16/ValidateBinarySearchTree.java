@@ -1,3 +1,4 @@
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -32,5 +33,34 @@ public class Solution {
         if(root==null) return true;
         if((long)root.val<=min||(long)root.val>=max) return false;
         return helper(root.left,min,(long)root.val)&&helper(root.right,(long)root.val,max);
+    }
+
+    //分治2，保存每个node的最大最小值
+    private class Node{
+        long min;
+        long max;
+        Node(long min,long max){
+            this.min=min;
+            this.max=max;
+        }
+    }
+    public boolean isValidBST(TreeNode root) {
+        if(root==null||(root.left==null&&root.right==null)) return true;
+        Node isBst=helper(root);
+        return isBst.max!=Long.MAX_VALUE&&isBst.min!=Long.MIN_VALUE;
+    }
+    private Node helper(TreeNode x){
+        if(x==null){
+            return new Node(Long.MAX_VALUE,Long.MIN_VALUE);
+        }
+        Node left=helper(x.left);
+        Node right=helper(x.right);
+        
+        long max=Math.max(x.val,right.max);
+        long min=Math.min(x.val,left.min);
+        if((long)x.val>left.max&&(long)x.val<right.min)
+            return new Node(min,max);
+        else
+            return new Node(Long.MIN_VALUE,Long.MAX_VALUE);
     }
 }
