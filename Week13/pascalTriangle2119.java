@@ -1,4 +1,5 @@
 public class Solution {
+    // same as pascalTriangle1
     public List<Integer> getRow(int rowIndex) {
         List<Integer> first = new ArrayList<Integer>();
         if(rowIndex < 0) {

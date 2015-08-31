@@ -1,4 +1,5 @@
 public class Solution {
+    // normal one
     public boolean isHappy(int n) {
         if(n <= 0) {
             return false;
@@ -23,5 +24,15 @@ public class Solution {
             x = x / 10;
         }
         return res;
+    }
+
+    // You could refer to wikipedia, search for 'happy number', then you could find that for any unhappy number, they will fall into one specific loop "4->16->37->...->2->4
+    public boolean isHappy(int n) {
+        if(n <= 0) return false;
+        while(n != 1) {
+            n = squareSum(n);
+            if(n == 4) return false;
+        }
+        return true;
     }
 }

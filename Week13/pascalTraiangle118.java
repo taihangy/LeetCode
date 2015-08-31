@@ -1,4 +1,5 @@
 public class Solution {
+    // be careful of corner cases like numRows == 0 or 1
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         if(numRows == 0) {

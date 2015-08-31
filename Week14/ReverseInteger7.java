@@ -1,5 +1,6 @@
 public class Solution {
     public int reverse(int x) {
+        // is better to think in this way, not in more compact way because it may cause unexpected mistakes
         boolean isNeg = false;
         if(x < 0) {
             isNeg = true;

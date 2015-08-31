@@ -1,4 +1,9 @@
 public class Solution {
+    // just corner case
+    // discard white space
+    // overflow
+    // sign of the number 
+    // invalid input
     public int myAtoi(String str) {
         if(str == null) return 0;
         str = str.trim();
@@ -21,6 +26,7 @@ public class Solution {
             if(num < 0 || num > 9){
             	break;
             }
+            // be aware of this overflow case
             if(!isNeg && sum > (double)((Integer.MAX_VALUE - num) / 10)) return Integer.MAX_VALUE;
             if(isNeg && - sum  < (double)((Integer.MIN_VALUE + num) / 10)) return Integer.MIN_VALUE;
             sum = sum * 10 + num;

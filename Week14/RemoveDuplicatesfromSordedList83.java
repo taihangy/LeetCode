@@ -7,6 +7,7 @@
  * }
  */
 public class Solution {
+    // time O(n), space O(1)
     public ListNode deleteDuplicates(ListNode head) {
         if(head == null) return null;
         ListNode dummy = new ListNode(0);
@@ -16,7 +17,9 @@ public class Solution {
         ListNode pre = dummy;
         while(cur != null) {
             if(cur.val != index.val) {
+                // line with new node
                 index.next = cur;
+                // cut duplicates
                 if(pre != index) {
                     pre.next = null;
                 }
@@ -27,5 +30,12 @@ public class Solution {
         }
         index.next = null;
         return dummy.next;
+    }
+
+    // recursive method, from end to start, in every recursion, remain head and head.next
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head == null || head.next == null) return head;
+        head.next = deleteDuplicates(head.next);
+        return head.val == head.next.val ? head.next : head;
     }
 }

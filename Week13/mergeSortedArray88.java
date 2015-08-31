@@ -1,4 +1,5 @@
 public class Solution {
+    // time comx O(m + n), space comx O(m)
     public void merge(int[] nums1, int m, int[] nums2, int n) {
         if(nums1 == null || nums2 == null || n == 0) return;
         if(m == 0) {

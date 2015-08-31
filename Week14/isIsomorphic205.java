@@ -31,4 +31,20 @@ public class Solution {
         }
         return true;
     }
+    // use ASCII 2
+    public boolean isIsomorphic(String s, String t) {
+        // check parameters
+        if(s == null || t == null || s.length() != t.length()) {
+            return false;
+        }
+        int[] sArray = new int[256];
+        int[] tArray = new int[256];
+        for(int i = 0; i < s.length(); i++) {
+            if(sArray[s.charAt(i)] != tArray[t.charAt(i)]) return false;
+            // be careful i + 1, not ++, this is for two char corresponding
+            sArray[s.charAt(i)] = i + 1;
+            tArray[t.charAt(i)] = i + 1;
+        }
+        return true;
+    }
 }

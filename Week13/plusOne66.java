@@ -8,6 +8,7 @@ public class Solution {
         for(int i = 0; i < digits.length; i++){
             if(digits[i] != 9) flag = false;
         }
+        // if every digit of number is 9, then we need enlarge the array
         if(flag) {
             res = new int[digits.length + 1];
             res[0] = 1;
@@ -19,6 +20,7 @@ public class Solution {
             int digit = (digits[i] + carry) % 10;
             carry = (digits[i] + carry) / 10;
             res[i] = digit;
+            // if carry is 0, then it stops
             if(carry != 1) break;
         }
         return res;

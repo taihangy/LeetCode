@@ -1,4 +1,5 @@
 public class Solution {
+    // by using Priority queue we can eaily find smallist
     public int nthUglyNumber(int n) {
         if(n < 4) return n;
         PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
@@ -21,6 +22,8 @@ public class Solution {
         return ugly;
     }
 
+    // the ugly number must be 2, 3, 5 multiply by 2, 3, 5
+    // maintain 3 queues, min(queue2, queue3, queue5) is next ugly number
     public int nthUglyNumber(int n) {
         if(n < 4) return n;
         ArrayList<Integer> queue2 = new ArrayList<Integer>();
@@ -41,10 +44,12 @@ public class Solution {
                 queue5.add(ugly > Integer.MAX_VALUE / 5 ? Integer.MAX_VALUE : ugly * 5);
             } else if(Math.min(Math.min(x, y), z) == y) {
                 ugly = queue3.remove(0);
+                // because ther must be some element in queue2, which multiply by 3, so there is no need to duplicate it
                 queue3.add(ugly > Integer.MAX_VALUE / 3 ? Integer.MAX_VALUE : ugly * 3);
                 queue5.add(ugly > Integer.MAX_VALUE / 5 ? Integer.MAX_VALUE : ugly * 5);
             } else {
                 ugly = queue5.remove(0);
+                // the same as befaore
                 queue5.add(ugly > Integer.MAX_VALUE / 5 ? Integer.MAX_VALUE : ugly * 5);
             }
         }

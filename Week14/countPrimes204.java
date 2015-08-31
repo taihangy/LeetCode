@@ -1,4 +1,6 @@
 public class Solution {
+    // brutet froce algorithm is judge every number less than n is prime
+    // this algorithm can count prime numbers less than n in linear time and constant space
     public int countPrimes(int n) {
         if(n < 2) {
             return 0;

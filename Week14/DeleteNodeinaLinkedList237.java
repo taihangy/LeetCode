@@ -7,6 +7,7 @@
  * }
  */
 public class Solution {
+	// ask can I change the original node in the list? do not consider I can't
     public void deleteNode(ListNode node) {
         if(node == null) return;
         node.val = node.next.val;

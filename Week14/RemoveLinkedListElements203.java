@@ -7,6 +7,7 @@
  * }
  */
 public class Solution {
+    // no any easy way, time O(n), space O(1)
     public ListNode removeElements(ListNode head, int val) {
         if(head == null) {
             return null;
