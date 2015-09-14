@@ -1,4 +1,5 @@
 public class Solution {
+    // it is easy to think time O(n), space O(1)
     public int minSubArrayLen(int s, int[] nums) {
         if(nums == null || nums.length == 0) return 0;
         int sum = 0, pre = 0;

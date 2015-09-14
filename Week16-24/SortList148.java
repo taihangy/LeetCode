@@ -7,6 +7,7 @@
  * }
  */
 public class Solution {
+    // merge sort, time O(nlogn), space O(1 )
     public ListNode sortList(ListNode head) {
         if(head == null || head.next == null) return head;
         ListNode dummy = new ListNode(0);

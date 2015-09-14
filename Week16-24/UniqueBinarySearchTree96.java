@@ -1,4 +1,5 @@
 public class Solution {
+    //time O(n^2), space O(n)
     public int numTrees(int n) {
         if(n == 0) return 0;
         int[] res = new int[n + 1];

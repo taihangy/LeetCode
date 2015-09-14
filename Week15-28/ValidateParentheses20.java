@@ -1,4 +1,5 @@
 public class Solution {
+    // time O(n), space O(n)
     public boolean isValid(String s) {
         if(s == null || s.length() == 0) return true;
         LinkedList<Character> stack = new LinkedList<Character>();

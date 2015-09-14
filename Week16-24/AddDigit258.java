@@ -1,4 +1,6 @@
 public class Solution {
+
+    // clever way but nothing to say about it
     public int addDigits(int num) {
         int sum = 1 + (num - 1) % 9;
         return sum;

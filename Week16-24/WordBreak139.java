@@ -1,4 +1,5 @@
 public class Solution {
+    // just DP version
     public boolean wordBreak(String s, Set<String> wordDict) {
         if(s == null || s.length() == 0 || wordDict == null) return false;
         boolean[] res = new boolean[s.length() + 1];

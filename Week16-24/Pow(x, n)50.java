@@ -1,4 +1,6 @@
 public class Solution {
+	// use the power of 2 to represent n, x ^ n, if n in that bit is one then multiply
+	// time O(logn)
     public double myPow(double x, int n) {
         if(x == 0 || n == 0) return 1.0;
         double res = 1.0;

@@ -1,13 +1,24 @@
 public class Solution {
-    /**
-    1. Find the largest index k such that nums[k] < nums[k + 1]. If no such index exists, the permutation is sorted in descending order, just reverse it to ascending order and we are done. For example, the next permutation of [3, 2, 1] is [1, 2, 3].
-    2. Find the largest index l greater than k such that nums[k] < nums[l].
-    3. Swap the value of nums[k] with that of nums[l].
-    4. Reverse the sequence from nums[k + 1] up to and including the final element nums[nums.size() - 1].
-    */
-    public void nextPermutation(int[] nums) {
-        if(nums == null || nums.length == 0) return;
-        // find the violent elem
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        if(nums == null || nums.length == 0) return res;
+        int times = factorial(nums.length);
+        for(int i = 0; i < times; i++) {
+            List next = nextPermutation(nums);
+            res.add(next);
+        }
+        return res;
+    }
+    private int factorial(int length) {
+        int res = 1;
+        while(length >= 1) {
+            res *= length;
+            length--;
+        }
+        return res;
+    }
+    private List<Integer> nextPermutation(int nums[]) {
+        List<Integer> res = new ArrayList<Integer>();
         int vio = -1;
         for(int i = nums.length - 1; i > 0; i--) {
             if(nums[i - 1] < nums[i]) {
@@ -33,8 +44,9 @@ public class Solution {
                 swap(nums, k, j);
             }
         }
+        for(int i : nums) res.add(i);
+        return res;
     }
-
     private void swap(int[] nums, int i, int j) {
         nums[i] ^= nums[j];
         nums[j] ^= nums[i];

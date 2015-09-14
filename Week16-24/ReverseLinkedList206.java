@@ -20,7 +20,7 @@ public class Solution {
         return reverseList(next, cur);
     }
 
-    // from begin to end O(n)
+    // from begin to end O(n), space O(1)
     public ListNode reverseList(ListNode head) {
         if(head==null) return null;
         ListNode pre = null;
@@ -34,7 +34,7 @@ public class Solution {
         return pre;
     }
 
-    //stack version O(n) O(n)
+    //stack version time O(n) space O(n)
     public ListNode reverseList(ListNode head) {
         if(head==null) return null;
         LinkedList<ListNode> stack=new LinkedList<ListNode>();

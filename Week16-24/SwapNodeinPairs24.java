@@ -7,6 +7,7 @@
  * }
  */
 public class Solution {
+    // two pointer be aware of the corner case
     public ListNode swapPairs(ListNode head) {
         if(head == null || head.next == null) return head;
         return swapPairs(head, head.next);

@@ -8,6 +8,7 @@
  * }
  */
 public class Solution {
+    // recursive, dive and conquer
     public List<TreeNode> generateTrees(int n) {
         return helper(1, n);
     }

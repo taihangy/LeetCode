@@ -7,6 +7,7 @@
  * }
  */
 public class Solution {
+    // two pointer for linkedlist
     public ListNode partition(ListNode head, int x) {
         if(head == null || head.next == null) return head;
         ListNode helper = new ListNode(0);
@@ -22,7 +23,7 @@ public class Solution {
                 } else {
                     runner = runner.next;
                 }
-                // make sure qualified node is fixed in that place
+                // make sure that the qualified node is fixed in that place
                 walker = walker.next;
             } else {
                 runner = runner.next;

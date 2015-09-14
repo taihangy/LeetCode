@@ -1,4 +1,5 @@
 public class Solution {
+    // too slow
     public int mySqrt(int x) {
         if(x <= 0) return 0;
         for(int i = 0; i < x / 2; i++) {
@@ -8,6 +9,7 @@ public class Solution {
     }
 }
 public class Solution {
+    // binary search O(logn)
     public int mySqrt(int x) {
         if(x <= 0) return 0;
         int lo = 1, hi = x / 2 + 1;
