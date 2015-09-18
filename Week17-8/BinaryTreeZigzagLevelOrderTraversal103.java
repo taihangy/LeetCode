@@ -8,6 +8,7 @@
  * }
  */
 public class Solution {
+    // recursive
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> res=new ArrayList<List<Integer>>();
         if(root==null) return res;
@@ -38,5 +39,39 @@ public class Solution {
         }   
         res.add(list);
         helper(res,level+1,newStack);
+    }
+
+    // non- recursive by using two stacks to track each level
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        List<List<Integer>> res=new ArrayList<List<Integer>>();
+        if(root==null) return res;
+        LinkedList<TreeNode> stackEven = new LinkedList<TreeNode>();
+        LinkedList<TreeNode> stackOdd = new LinkedList<TreeNode>();
+        stackEven.push(root);
+        int level = 1;
+        List<Integer> list = null;
+        TreeNode tn = null;
+        while(!stackOdd.isEmpty() || !stackEven.isEmpty()) {
+            list = new ArrayList<Integer>();
+            if(level % 2 == 0) {
+                while(!stackOdd.isEmpty()) {
+                    tn = stackOdd.pop();
+                    list.add(tn.val);
+                    if(tn.right != null) stackEven.push(tn.right);
+                    if(tn.left != null) stackEven.push(tn.left);
+                }
+            }
+            else {
+                while(!stackEven.isEmpty()) {
+                    tn = stackEven.pop();
+                    list.add(tn.val);
+                    if(tn.left != null) stackOdd.push(tn.left);
+                    if(tn.right != null) stackOdd.push(tn.right);
+                }
+            }
+            res.add(list);
+            level++;
+        }
+        return res;
     }
 }

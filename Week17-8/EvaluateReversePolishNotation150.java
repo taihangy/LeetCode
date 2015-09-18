@@ -25,8 +25,6 @@ public class Solution {
                     break;
                 default:
                     stack.push(Integer.parseInt(s));
-                    break;
-                    
             }
         }
         return stack.pop();
