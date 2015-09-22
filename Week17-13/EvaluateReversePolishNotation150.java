@@ -1,4 +1,8 @@
 public class Solution {
+    /**
+    * Using stack to keep track of number
+    * Time O(n), Space O(n)
+    */
     public int evalRPN(String[] tokens) {
         if(tokens == null || tokens.length == 0) return 0;
         Stack<Integer> stack = new Stack<>();

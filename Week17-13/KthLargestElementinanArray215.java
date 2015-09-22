@@ -1,4 +1,8 @@
 public class Solution {
+    /**
+    * Using heap sort, it can delete max/min quickly, so just delete k times
+    * Time O(nlogn), Space O(n) - auxiliary array
+    */
     public int findKthLargest(int[] nums, int k) {
         if(nums==null||nums.length==0) return -1;
         int[] newNums = new int[nums.length + 1];

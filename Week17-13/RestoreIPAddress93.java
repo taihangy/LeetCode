@@ -1,4 +1,7 @@
 public class Solution {
+    /**
+    * Recursive version
+    */
     public List<String> restoreIpAddresses(String s) {
         List<String> res = new ArrayList<String>();
         if(s == null || s.length() == 0 || s.length() > 12) return res;

@@ -8,6 +8,9 @@
  * }
  */
 public class Solution {
+    /**
+    * Recursive version of Inorder traversal
+    */
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<Integer>();
         if(root == null) return res;
@@ -22,6 +25,10 @@ public class Solution {
         helper(res, node.right);
     }
 
+
+    /**
+    * Iterative version using stack
+    */
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<Integer>();
         if(root == null) return res;

@@ -8,6 +8,9 @@
  * }
  */
 public class Solution {
+    /**
+    * Recursive version of Inorder traversal
+    */
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<Integer>();
         if(root == null) return res;
@@ -22,6 +25,9 @@ public class Solution {
         res.add(node.val);
     }
 
+    /**
+    * Iterative version using two stacks, one keeps value and the other keeps * node
+    */
     public List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<Integer>();
         if(root == null) return res;

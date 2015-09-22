@@ -8,7 +8,9 @@
  * }
  */
 public class Solution {
-    // recursive
+    /**
+    * Recursive version of Inorder traversal
+    */
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> res=new ArrayList<List<Integer>>();
         if(root==null) return res;
@@ -41,7 +43,10 @@ public class Solution {
         helper(res,level+1,newStack);
     }
 
-    // non- recursive by using two stacks to track each level
+    /** 
+    * Non-recursive by using two stacks to track each level
+    * Time O(n), Space O(n)
+    */
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> res=new ArrayList<List<Integer>>();
         if(root==null) return res;

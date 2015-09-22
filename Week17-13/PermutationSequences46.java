@@ -1,4 +1,10 @@
 public class Solution {
+    /**
+    * This is standard version of find next permutation
+    * first find the first decrease element violet, then find from end of array  
+    * the element which is larger than violet element, swap them and swap rest
+    * 
+    */
     public String getPermutation(int n, int k) {
         if(n <= 0 || k < 1) return null;
         int[] nums = new int[n];
@@ -45,6 +51,9 @@ public class Solution {
         nums[i] ^= nums[j];
     }
 
+    /**
+    * the first number is k / (n - 1)!, use this method will easily to find the right answer
+    */
     public String getPermutation(int n, int k) {
         if(n < 1) return "";
         k--;

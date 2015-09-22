@@ -1,4 +1,7 @@
 public class Solution {
+    /**
+    * DP 
+    */
     public int numSquares(int n) {
         if(n <= 0) return 0;
         int[] res = new int[n + 1];
