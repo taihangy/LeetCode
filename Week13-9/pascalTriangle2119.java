@@ -24,4 +24,21 @@ public class Solution {
         }
         return second;
     }
+
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> res = new ArrayList<Integer>();
+        if(rowIndex < 0) return res;
+        res.add(1);
+        if(rowIndex == 0) return res;
+        res.add(1);
+        if(rowIndex == 1) return res;
+        for(int i = 2; i <= rowIndex; i++) {
+            int size = res.size();
+            for(int j = size - 1; j > 0; j--) {
+                res.set(j, res.get(j) + res.get(j - 1));
+            }
+            res.add(1);
+        }
+        return res;
+    }
 }
