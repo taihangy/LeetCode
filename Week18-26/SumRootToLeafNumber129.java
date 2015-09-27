@@ -8,6 +8,7 @@
  * }
  */
 public class Solution {
+    // dfs same as PathSum 129
     public int sumNumbers(TreeNode root) {
         if(root == null) return 0;
         List<String> res = new ArrayList<String>();
@@ -21,13 +22,10 @@ public class Solution {
         return total;
     }
     private void helper(List<String> res, TreeNode node, StringBuilder sb) {
-        if(node.left == null && node.right == null) {
-            sb.append(node.val);
-            res.add(sb.toString());
-            sb.deleteCharAt(sb.length() - 1);
-            return;
-        }
         sb.append(node.val);
+        if(node.left == null && node.right == null) {
+            res.add(sb.toString());
+        }
         if(node.left != null)
             helper(res, node.left, sb);
         if(node.right != null)
@@ -45,6 +43,7 @@ public class Solution {
         return helper(root.left, 10 * sum + root.val) + helper(root.right, 10 * sum + root.val);
     }
 
+    // level order traversal
     public int sumNumbers(TreeNode root) {
         if(root == null) return 0;
         int total = 0;

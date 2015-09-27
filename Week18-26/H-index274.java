@@ -1,4 +1,5 @@
 public class Solution {
+    // time O(nlogn)
     public int hIndex(int[] citations) {
         if(citations == null || citations.length == 0) return 0;
         int N = citations.length;

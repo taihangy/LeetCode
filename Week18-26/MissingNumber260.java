@@ -1,4 +1,5 @@
 public class Solution {
+    // Time O(3n), Space O(n)
     public int missingNumber(int[] nums) {
         if(nums == null || nums.length == 0) return 0;
         int max = Integer.MIN_VALUE;
@@ -19,6 +20,7 @@ public class Solution {
         return max + 1;
     }
 
+    // Math solution, Time O(n), Space O(1)
     public int missingNumber(int[] nums) {
         if(nums == null || nums.length == 0) return 0;
         int len = nums.length;
@@ -29,6 +31,7 @@ public class Solution {
         return sum;
     }
 
+    // Time O(n), space O(1)
     public int missingNumber(int[] nums) {
         if(nums == null || nums.length == 0) return 0;
         int res = 0;

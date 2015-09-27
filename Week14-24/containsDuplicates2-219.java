@@ -5,12 +5,8 @@ public class Solution {
         }
         HashSet<Integer> dupInK = new HashSet<Integer>();
         for(int i = 0; i < nums.length; i++) {
-            if(dupInK.contains(nums[i])) {
-                return true;
-            } else {
-                dupInK.add(nums[i]);
-                if(i >= k) dupInK.remove(nums[i - k]);
-            }
+            if(!dupInK.add(nums[i])) return true;
+            if(i >= k) dupInK.remove(nums[i - k]);
         }
         return false;
     }

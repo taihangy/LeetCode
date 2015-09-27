@@ -8,7 +8,7 @@
  * }
  */
 public class Solution {
-    // pre order
+    // preorder
     public void flatten(TreeNode root) {
         if(root == null) return;
         TreeNode right = root.right;
@@ -24,7 +24,7 @@ public class Solution {
         cur.right = right;
     }
 
-    // post order
+    // postorder
     private TreeNode next;
     public void flatten(TreeNode root) {
         if(root == null) return;
@@ -35,7 +35,7 @@ public class Solution {
         next = root;
     }
 
-    // not accepted but
+    // not accepted but using preorder and then link them one by one
     public void flatten(TreeNode root) {
         if(root == null) return;
         ArrayList<TreeNode> res = new ArrayList<TreeNode>();

@@ -75,4 +75,29 @@ public class Solution {
             return countFirst > countSecond? first : second;
         }
     }
+
+    // recursive version improve, DON'T LET THE OUTLET BE TOO SMALL, IF THEN YOU WILL MAKE THE RECURSION TREE TOO DEEP WHICH CAN SLOW DOWN YOUR SPEED, EVEN STACK OVERFLOW
+    public int majorityElement(int[] nums) {
+        if(nums == null || nums.length == 0) return 0;
+        return helper(nums, 0, nums.length - 1);
+    }
+    
+    private int helper(int[] nums, int start, int end) {
+        if(start + 2 >= end) {
+            int major = nums[start], count = 0;
+            for(int i = start; i <= end; i++) {
+                if(nums[i] == major) count++;
+            }
+            return count == 1? nums[end] : nums[start]; 
+        }
+        int mid = (start + end) / 2;
+        int leftMaj = helper(nums, start, mid);
+        int rightMaj = helper(nums, mid + 1, end);
+        if(leftMaj == rightMaj) return leftMaj;
+        int count = 0;
+        for(int i = start; i <= end; i++) {
+            if(nums[i] == leftMaj) count++;
+        }
+        return count > (end - start + 1) / 2? leftMaj : rightMaj;
+    }
 }

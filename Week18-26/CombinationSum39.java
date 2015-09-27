@@ -1,4 +1,5 @@
 public class Solution {
+    // dfs
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> res = new ArrayList<List<Integer>>();
         if(candidates == null || candidates.length == 0) return res;

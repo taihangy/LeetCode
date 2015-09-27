@@ -116,8 +116,11 @@ public class Solution {
         return res;
     }
      
-    // dfs stack over slow, but it can do the job
-    public void solve(char[][] board) {
+    // dfs stack over flow, but it can do the job
+    private static int[] dirX = {1, -1, 0, 0};
+    private static int[] dirY = {0, 0, 1, -1};
+    
+   public void solve(char[][] board) {
         if(board == null || board.length == 0 || board[0].length == 0) return;
         int m = board.length, n = board[0].length;
         boolean[][] marked = new boolean[m][n];
@@ -142,21 +145,21 @@ public class Solution {
     
     private void dfs(char[][] board, boolean[][] marked, int i, int j) {
         marked[i][j] = true;
-        for(int[] near : neighbor(marked, board, i, j, board.length, board[0].length)) {
+        for(int[] near : neighbor(i, j, board.length, board[0].length)) {
             int nearI = near[0], nearJ = near[1];
-            dfs(board, marked, nearI, nearJ);
+            if(!marked[nearI][nearJ] && board[nearI][nearJ] == 'O') {
+                dfs(board, marked, nearI, nearJ);
+            }
         }
     }
     
-    private List<int[]> neighbor(boolean[][] marked, char[][] board, int i, int j, int m, int n) {
+    private List<int[]> neighbor(int i, int j, int m, int n) {
         List<int[]> res = new ArrayList<int[]>();
-        int[][] dirs = {{i - 1, j}, {i + 1, j}, {i, j - 1}, {i, j + 1}};
-        for(int k = 0; k < dirs.length; k++) {
-            int[] dir = dirs[k];
-            int nearI = dir[0], nearJ = dir[1];
-            if(nearI >= 0 && nearI < m &&
-               nearJ >= 0 && nearJ < n &&
-               !marked[nearI][nearJ] && board[nearI][nearJ] == 'O') {
+        for(int k = 0; k < dirX.length; k++) {
+            int nearI = i + dirX[k];
+            int nearJ = j + dirY[k];
+            int[] dir = new int[]{nearI, nearJ};
+            if(nearI >= 0 && nearI < m && nearJ >= 0 && nearJ < n) {
                 res.add(dir);
             }
         }

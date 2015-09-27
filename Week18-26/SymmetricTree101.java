@@ -8,6 +8,7 @@
  * }
  */
 public class Solution {
+    // RECURSION
     public boolean isSymmetric(TreeNode root) {
         if(root == null) return true;
         return symmetric(root.left, root.right);

@@ -7,6 +7,7 @@
  * }
  */
 public class Solution {
+    // same as 1
     public void connect(TreeLinkNode root) {
         if(root == null) return;
         LinkedList<TreeLinkNode> queue = new LinkedList<TreeLinkNode>();
@@ -29,14 +30,26 @@ public class Solution {
             }
         }
     }
-     
+
+    // level order traversal recursive version
     public void connect(TreeLinkNode root) {
-        helper(root, null);
+        if(root==null) return;
+        List<TreeLinkNode> last = new ArrayList<TreeLinkNode>();
+        last.add(root);
+        helper(last);
     }
-    private void helper(TreeLinkNode root, TreeLinkNode next) {
-        if(root == null) return;
-        if(next != null) root.next = next;
-        helper(root.left, root.right);
-        helper(root.right, root.next == null? null : root.next.left);
+    
+    private void helper(List<TreeLinkNode> last) {
+        if(last.isEmpty() || last.size() == 0) return;
+        List<TreeLinkNode> cur = new ArrayList<TreeLinkNode>();
+        int size = last.size();
+        for(int i = 0; i < size; i++) {
+            TreeLinkNode node = last.get(i);
+            if(i == size - 1) node.next = null;
+            else node.next = last.get(i + 1);
+            if(node.left != null) cur.add(node.left);
+            if(node.right != null) cur.add(node.right);
+        }
+        helper(cur);
     }
 }

@@ -13,6 +13,7 @@ public class Solution {
         ListNode pre = dummy, cur = head, next = null;
         while(cur != null) {
             next = cur.next;
+            // it will compare from head to cur.prev
             while(pre.next != null && pre.next.val < cur.val) {
                 pre = pre.next;
             }
@@ -26,6 +27,7 @@ public class Solution {
 
     /**
     * Time O(n^2 / 4 + 3n), Space O(2n)
+    * Converting linked list to array
     */
     public ListNode insertionSortList(ListNode head) {
         if(head == null || head.next == null) return head;
@@ -57,18 +59,17 @@ public class Solution {
         }
         return newH;
     }
+
+    // improve version of insertsort, it will improve a lot
     private void insertionSort(int[] nums) {
         int N = nums.length;
         for(int i = 1; i < N; i++) {
-            for(int j = i; j > 0 && less(nums, j, j - 1); j--) {
-                exch(nums, j, j - 1);
+            int store = nums[i];
+            int j;
+            for(j = i; j > 0 && nums[j - 1] > store; j--) {
+                nums[j] = nums[j - 1];
             }
+            nums[j] = store;
         }
-    }
-    private boolean less(int[] nums, int i, int j) {
-        return nums[i] < nums[j];
-    }
-    private void exch(int[] nums, int i, int j) {
-        nums[i] ^= nums[j]; nums[j] ^= nums[i]; nums[i] ^= nums[j];
     }
 }

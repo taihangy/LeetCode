@@ -1,4 +1,5 @@
 public class Solution {
+    // using Comparator interface to compare
     public final numComparator CMP = new numComparator();
     public String largestNumber(int[] nums) {
         if(nums == null || nums.length == 0) return "";

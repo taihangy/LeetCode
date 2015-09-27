@@ -1,14 +1,22 @@
 public class Solution {
-    public boolean canFinish(int numCourses, int[][] prerequisites) {
-        if(prerequisites == null || prerequisites.length == 0 || prerequisites[0].length == 0) return true;
+    // DAG, Topological sort, summary respectively
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        // Construct Digraph
         Digraph G = new Digraph(numCourses);
         for(int i = 0; i < prerequisites.length; i++) {
-            for(int j = 0; j < prerequisites[i].length; j++) {
-                G.addEdge(prerequisites[i][j], prerequisites[i][++j]);
+            for(int j = 0; j < prerequisites[i].length; j += 2) {
+                G.addEdge(prerequisites[i][j + 1], prerequisites[i][j]);
             }
         }
+        // Detect Cycle
         DetectCycle dc = new DetectCycle(G);
-        return !dc.hasCycle();
+        if(dc.hasCycle()) return new int[]{};
+        // reversePost order
+        int[] res = new int[numCourses];
+        for(int i = 0 ; i < numCourses; i++) {
+            res[i] = dc.path.pop();
+        }
+        return res;
     }
     
     public class Digraph {
@@ -40,10 +48,12 @@ public class Solution {
         private boolean[] marked;
         private boolean[] onStack;
         private boolean hasCycle;
+        private Stack<Integer> path;
         
         public DetectCycle(Digraph G) {
             marked = new boolean[G.V()];
             onStack = new boolean[G.V()];
+            path = new Stack<Integer>();
             hasCycle = false;
             for(int i = 0; i < G.V(); i++) {
                 if(!marked[i]) {
@@ -67,12 +77,16 @@ public class Solution {
                     break;
                 }
             }
-            
+            path.push(v);
             onStack[v] = false;
         }
         
         public boolean hasCycle() {
             return hasCycle;
+        }
+        
+        public Iterable<Integer> path() {
+            return path;
         }
     }
 }
