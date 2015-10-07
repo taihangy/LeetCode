@@ -27,4 +27,34 @@ public class Solution {
         }
         return true;
     }
+
+    // Time O(n), space O(1)
+    public boolean isPalindrome(ListNode head) {
+        if(head == null || head.next == null) return true;
+        // find the half of the list
+        ListNode walker = head;
+        ListNode runner = head;
+        while(runner.next != null && runner.next.next != null) {
+            walker = walker.next;
+            runner = runner.next.next;
+        }
+        ListNode half = walker.next;
+        ListNode secondHead = reverse(half, null);
+        ListNode firstHead = head;
+        while(secondHead != null) {
+            if(secondHead.val != firstHead.val) return false;
+            secondHead= secondHead.next;
+            firstHead = firstHead.next;
+        }
+        return true;
+    }
+    private ListNode reverse(ListNode cur, ListNode pre) {
+        while(cur != null) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        return pre;
+    }
 }

@@ -83,3 +83,64 @@ public class Solution {
         return res;
     }
 }
+
+// Union Find Solution
+public class Solution {
+    private class UF {
+        private int[] id;
+        private int[] size;
+        private int count;
+        
+        public UF(int N) {
+            this.id = new int[N];
+            this.size = new int[N];
+            this.count = N;
+            for(int i = 0; i < N; i++) {
+                size[i] = 1;
+                id[i] = i;
+            }
+        }
+        
+        public int count() { return count; }
+        
+        public int find(int p) {
+            while(p != id[p]) {
+                id[p] = id[id[p]];
+                p = id[p];
+            }
+            return p;
+        }
+        
+        public void union(int p, int q) {
+            int pRoot = find(p);
+            int qRoot = find(q);
+            if(pRoot == qRoot) return;
+            if(size[p] < size[q]) {
+                id[pRoot] = qRoot;
+                size[qRoot] += size[pRoot];
+            } else {
+                id[qRoot] = pRoot;
+                size[pRoot] += size[qRoot];
+            }
+            count--;
+        }
+    }
+    public int numIslands(char[][] grid) {
+        if(grid == null || grid.length == 0 || grid[0].length == 0) return 0;
+        int count = 0;
+        int row = grid.length, col = grid[0].length;
+        UF uf = new UF(row * col + 1);
+        int dummyPoint = row * col;
+        for(int i = 0; i < row; i++) {
+            for(int j = 0; j < col; j++) {
+                if(grid[i][j] == '1') {
+                    if(i < row - 1 && grid[i + 1][j] == '1') uf.union(i * col + j, (i + 1) * col + j);
+                    if(j < col - 1 && grid[i][j + 1] == '1') uf.union(i * col + j, i * col + j + 1);
+                } else {
+                    uf.union(i * col + j, dummyPoint);
+                }
+            }
+        }
+        return uf.count() - 1;
+    }
+}

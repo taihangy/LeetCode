@@ -166,3 +166,81 @@ public class Solution {
         return res;
     }
 }
+
+//Union Find Version
+public class Solution {
+    private class UF {
+        private int[] id;
+        private int[] size;
+        private int count;
+        
+        public UF(int N) {
+            this.id = new int[N];
+            this.size = new int[N];
+            this.count = N;
+            for(int i = 0; i < N; i++) {
+                size[i] = 1;
+                id[i] = i;
+            }
+        }
+        
+        public int count() { return count; }
+        
+        public int find(int p) {
+            while(p != id[p]) {
+                id[p] = id[id[p]];
+                p = id[p];
+            }
+            return p;
+        }
+        
+        public boolean connected(int p, int q) {
+            return find(p) == find(q);
+        }
+        
+        public void union(int p, int q) {
+            int pRoot = find(p);
+            int qRoot = find(q);
+            if(pRoot == qRoot) return;
+            if(size[p] < size[q]) {
+                id[pRoot] = qRoot;
+                size[qRoot] += size[pRoot];
+            } else {
+                id[qRoot] = pRoot;
+                size[pRoot] += size[qRoot];
+            }
+            count--;
+        }
+    }
+    public void solve(char[][] board) {
+        if(board == null || board.length == 0 || board[0].length == 0) return;
+        int row = board.length, col = board[0].length;
+        UF uf = new UF(row * col + 1);
+        int dummy = row * col;
+        for(int i = 0; i < row; i++) {
+            for(int j = 0; j < col; j++) {
+                if(board[i][j] == 'O') {
+                    if(i == 0 || i == row - 1 || j == 0 || j == col - 1) {
+                        uf.union(i * col + j, dummy);
+                    } else {
+                        if(i - 1 >= 0 && board[i - 1][j] == 'O') 
+                            uf.union((i - 1) * col + j, i * col + j);
+                        if(i + 1 < row && board[i + 1][j] == 'O') 
+                            uf.union((i + 1) * col + j, i * col + j);
+                        if(j - 1 >= 0 && board[i][j - 1] == 'O') 
+                            uf.union(i * col + j - 1, i * col + j);
+                        if(j + 1 < col && board[i][j + 1] == 'O') 
+                            uf.union(i * col + j + 1, i * col + j);
+                    }
+                } 
+            }
+        }
+        for(int i = 0; i < row; i++) {
+            for(int j = 0; j < col; j++) {
+                if(!uf.connected(i * col + j, dummy)) {
+                    board[i][j] = 'X';
+                }
+            }
+        }
+    }
+}

@@ -35,4 +35,16 @@ public class Solution {
         boolean right = helper(tn.right, pre);
         return left && right;
     }
+
+    // recursion
+    public boolean isValidBST(TreeNode root) {
+        if(root == null) return true;
+        return helper(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+    
+    private boolean helper(TreeNode root, long min, long max) {
+        return (root.val >= min && root.val <= max) &&
+               (root.left == null || helper(root.left, min, (long)root.val - 1)) &&
+               (root.right == null || helper(root.right, (long)root.val + 1, max));
+    }
 }

@@ -1,5 +1,5 @@
 public class Solution {
-    //fist bfs to find all words to specific word, and words' distance to start
+    //first bfs to find all words to specific word, and words' distance to start
     // then dfs to find shortest paths from end to start 
     public List<List<String>> findLadders(String start, String end, Set<String> dict) {
         List<List<String>> res=new ArrayList<List<String>>();
