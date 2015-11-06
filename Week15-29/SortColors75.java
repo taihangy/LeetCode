@@ -33,6 +33,23 @@ public class Solution {
         nums[i] ^= nums[j];
     }
 
+    public void sortColors(int[] nums) {
+        if(nums == null || nums.length == 0) return;
+        int lt= 0, gt = nums.length - 1;
+        int i = 0;
+        while(i <= gt) {
+            if(nums[i] < 1) swap(nums, lt++, i++);
+            else if(nums[i] > 1) swap(nums, gt--, i);
+            else i++;
+        }
+    }
+    
+    private void swap(int[] nums, int i, int j) {
+        int t = nums[i];
+        nums[i] = nums[j];
+        nums[j] = t;
+    }
+
     // count sort easy version, two passes
     public void sortColors(int[] nums) {
         if(nums == null || nums.length == 0) return;

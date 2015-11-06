@@ -57,4 +57,25 @@ public class Solution {
         }
         return pre;
     }
+
+    //Using Stack, Time O(n), space O(n)
+    public boolean isPalindrome(ListNode head) {
+        if(head == null || head.next == null) return true;
+        Stack<ListNode> stack = new Stack<ListNode>();
+        ListNode walker = head;
+        ListNode runner = head;
+        while(runner.next != null && runner.next.next != null) {
+            stack.push(walker);
+            walker = walker.next;
+            runner = runner.next.next;
+        }
+        if(runner.next != null)
+            stack.push(walker);
+        ListNode mid = walker.next;
+        while(!stack.isEmpty() && mid != null) {
+            if(mid.val != stack.pop().val) return false;
+            mid = mid.next;
+        }
+        return true;
+    }
 }

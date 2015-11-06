@@ -3,7 +3,7 @@ public class Solution {
     public int rangeBitwiseAnd(int m, int n) {
         int res = 0;
         for(int i = m; i <= n; i++) {
-            res ^= i;
+            res &= i;
         }
         return res;
     }

@@ -31,7 +31,7 @@ public class Solution {
         }
         return true;
     }
-    // use ASCII 2
+    // use ASCII 
     public boolean isIsomorphic(String s, String t) {
         // check parameters
         if(s == null || t == null || s.length() != t.length()) {

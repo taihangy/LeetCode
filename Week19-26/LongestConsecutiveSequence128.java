@@ -1,4 +1,5 @@
 public class Solution {
+    //HashSet find the consecutive subsequence by iterator and remove the element when its length increasing
     public int longestConsecutive(int[] nums) {
         if(nums == null || nums.length == 0) return 0;
         HashSet<Integer> set = new HashSet<Integer>();
@@ -26,7 +27,7 @@ public class Solution {
         return max;
     }
 
-    //HashMap version which could save sequence boundary and corresponding 
+    //HashMap version which could save sequence boundary and corresponding length of that subsequence
     public int longestConsecutive(int[] nums) {
         if(nums == null || nums.length == 0) return 0;
         HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();

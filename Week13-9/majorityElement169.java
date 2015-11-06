@@ -53,7 +53,7 @@ public class Solution {
     }
 
     // dive and conquer
-    // T(n) = T(n / 2) + 2n, T(1) = 1, time comx O(nlongn)
+    // T(n) = T(n / 2) + 2n, T(1) = 1, time comx O(NlogN), space O(logN)
     // first part majority element A, second B, if A==B, then settled, if not, check A and B through entire array to determine the majority element
     public int majorityElement(int[] nums) {
         if(nums == null || nums.length == 0) return Integer.MAX_VALUE;

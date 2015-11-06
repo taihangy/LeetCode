@@ -1,5 +1,5 @@
 public class Solution {
-    // same method, teo pointer and be careful of the array tail
+    // same method, two pointer and be careful of the array tail
     // time O(n), space O(1)
     public List<String> summaryRanges(int[] nums) {
         if(nums == null) return null;

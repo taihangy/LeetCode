@@ -28,3 +28,4 @@ public class Solution {
         return minlen == Integer.MAX_VALUE?"" : s.substring(start, start + minlen);
     }
 }
+//We can use KMP like algorithm

@@ -29,7 +29,8 @@ public class Solution {
         int n = triangle.size();
         for(int i = n - 2; i >= 0; i--) {
             for(int j = 0; j <= i; j++) {
-                int sum = Math.min(triangle.get(i + 1).get(j), triangle.get(i + 1).get(j + 1)) + triangle.get(i).get(j);
+                int sum = Math.min(triangle.get(i + 1).get(j), 
+                                   triangle.get(i + 1).get(j + 1)) + triangle.get(i).get(j);
                 triangle.get(i).set(j, sum);
             }
         }

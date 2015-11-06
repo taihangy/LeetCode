@@ -3,7 +3,7 @@ class MinStack {
     private LinkedList<Integer> min = new LinkedList<Integer>();
     public void push(int x) {
         stack.push(x);
-        if(min.isEmpty() || min.peek() >= x) 
+        if(min.isEmpty() || x <= min.peek()) 
             min.push(x);
     } 
 

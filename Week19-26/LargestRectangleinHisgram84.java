@@ -26,7 +26,7 @@ public class Solution {
         Stack<Integer> stack = new Stack<>();
         for(int i = 0; i <= length; i++) {
             int h = i == length? 0 : height[i];
-            if(stack.isEmpty() || h >= height[stack.peek()]) {
+            if(stack.isEmpty() || h > height[stack.peek()]) {
                 stack.push(i);
             } else {
                 int top = stack.pop();
