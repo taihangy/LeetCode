@@ -1,0 +1,138 @@
+1. In Java, how does System.out.println() work?
+The more exact answer to the original question is this: inside the System class is the declaration of ‘out’ that looks like: ‘public static final PrintStream out’, and inside the Prinstream class is a declaration of ‘println()’ that has a method signature that looks like: ‘public void println()’.
+
+
+2. Is the JVM (Java Virtual Machine) platform dependent or platform independent? What is the advantage of using the JVM, and having Java be a translated language?
+The JVM is used primarily for 2 things: the first is to translate the bytecode into the machine language for a particular computer, and the second thing is to actually execute the corresponding machine-language instructions as well. The JVM and bytecode combined give Java its status as a "portable" language – this is because Java bytecode can be transferred from one machine to another.
+Given the previous information, it should be easier to figure out an answer to the original question. Since the JVM must translate the bytecode into machine language, and since the machine language depends on the operating system being used, it is clear that the JVM is platform (operating system) dependent – in other words, the JVM is not platform independent.
+
+3. In Java, what’s the difference between method overloading and method overriding?
+Overloading first. Method overloading in Java occurs when two or more methods in the same class have the exact same name but different parameters
+1.) The number of parameters is different for the methods.
+2.) The parameter types are different (like 
+changing a parameter that was a float to an int).  
+1.  Just changing the return type of the method.  
+If the return type of the method is the only thing 
+changed, then this will result in a compiler error.  
+
+2.  Changing just the name of the method parameters, but 
+not changing the parameter types.  If the name of the 
+method parameter is the only thing changed then this 
+will also result in a compiler error.
+
+An Overridden method would have the exact same method name, return type, number of parameters, and types of parameters as the method in the parent class, and the only difference would be the definition of the method.
+
+Let’s summarize the differences between overloading and overriding. When overloading, one must change either the type or the number of parameters for a method that belongs to the same class. Overriding means that a method inherited from a parent class will be changed. But, when overriding a method everything remains exactly the same except the method definition – basically what the method does is changed slightly to fit in with the needs of the child class. But, the method name, the number and types of parameters, and the return type will all remain the same.
+
+And, method overriding is a run-time phenomenon that is the driving force behind polymorphism. However, method overloading is a compile-time phenomenon.
+
+4.What’s the point of having a private constructor?
+The private modifier when applied to a constructor works in much the same way as when applied to a normal method or even an instance variable. Defining a constructor with the private modifier says that only the native class (as in the class in which the private constructor is defined) is allowed to create an instance of the class, and no other caller is permitted to do so. There are two possible reasons why one would want to use a private constructor – the first is that you don’t want any objects of your class to be created at all, and the second is that you only want objects to be created internally – as in only created in your class.
+
+5. In Java, what’s the difference between an object and a class?
+So, we can say that whereas a class is a general concept (like an Animal), an object is a very specific embodiment of that class, with a limited lifespan (like a lion, cat, or a zebra). Another way of thinking about the difference between a class and an object is that a class provides a template for something more specific that the programmer has to define, which he/she will do when creating an object of that class.
+
+This question is about copy constructors: let’s say that you are given the following two accessor methods that belong to a class called SomeClass. An accessor method is simply a method used to get access to the instance variables of a class:
+
+ 
+public class SomeClass
+{
+	public String getName()
+	{
+			return lastName;
+	}
+
+	public Year getYear()
+	{
+			return new Year(leapYear);
+	}
+}
+ 
+
+6. You can assume that leapYear is a private instance variable of the Year class, and lastName is a private instance variable of the String class. Why is it that a copy constructor is being called in the second method, but not in the first? Why even use a copy constructor in the first place?
+
+Before we explain this problem further, it helps to define a copy constructor: A copy constructor is a constructor that takes only one parameter which is the same exact type as the class in which the copy constructor is defined. For example, suppose we define a class called X. Then, a copy constructor defined in class X would also expect a parameter of type X. In the example above, the statement "return new Year(leapYear);" is using a copy constructor because Year is a class and leapYear is an object of the Year class.
+
+A copy constructor is used to create another object that is a copy of the object that it takes as a parameter. But, the newly created copy is actually independent of the original object. It is independent in the sense that the copy is located at a completely different address in memory than the original.
+
+Why copy constructors are used
+
+So, why is it that the second method (getYear) is using a copy constructor? Let’s say we redefined getYear, so that it doesn’t use a copy constructor. It would look like this:
+
+//bad version of getYear, no copy constructor
+public Year getYear()
+{
+	return leapYear;
+}
+The problem here is that a reference to the private instance variable ‘leapYear’ is being returned. This means that anyone could declare a SomeClass object, call the accessor method getYear() with that object and assign the return value to a Year object. The danger with this is that the Year object now holds a reference to what was supposed to be a private instance variable (leapYear), thereby violating its privacy. This is shown below:
+
+/* let's say that we're using the bad definition of getYear,
+   without a copy constructor  */
+public class SomeClass
+{
+	public Year getYear()
+	{
+		return leapYear;
+	}
+}
+
+//suppose the following is done in some other class:
+SomeClass someObj = new SomeClass();
+
+Year badObj = someObj.getYear();  
+
+//badObj now has a reference to leapYear, which 
+//it shouldn't be able to access.
+
+//With a reference, badObj can now change the 
+//contents of the private instance variable leapYear
+
+By using a copy constructor in the definition of getYear(), a separate Year object is created entirely. This object has the same values stored in the instance variables as the original leapYear object, but with its own address space. This way the original leapYear is safe.
+
+In the getName() method defined above, it looks like we will encounter the same problem, because we are returning a reference to a private instance variable. So now the question is why isn’t a copy constructor being used in the method getName()?
+
+The answer is that it simply does not need a copy constructor because the value of the instance variable "lastName" can not be changed, even if we have a reference to it. This is because the String class is what’s called an immutable class – which means that it contains no mutator methods that would allow us to change any String object. So, even with the reference, we can’t modify "lastName". This is why it’s perfectly safe to return a reference to "lastName" even though it’s a private instance variable.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
