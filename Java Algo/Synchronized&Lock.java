@@ -104,12 +104,12 @@ public class LockedATM {
 }
 
 /*
-A deadlock isa situation where a thread iswaiting for an object lock that another thread holds, and this second thread is waiting for an object lock that the first thread holds (or anequivalent situationwith severalthreads).Sinceeachthread iswaitingfor the other thread to relinquish a lock, they both remain waiting forever. The threads are said to be deadlocked.
+A deadlock is a situation where a thread is waiting for an object lock that another thread holds, and this second thread is waiting for an object lock that the first thread holds (or an equivalent situation with several threads).Since each thread is waitingfor the other thread to relinquish a lock, they both remain waiting forever. The threads are said to be deadlocked.
 
 deadlock to occur, you must have all four of the following conditions meet:
-1. Mutual Exclusion: Only one processcan access a resourceat a given time. (Or, more accurately, there is limited access to a resource. A deadlock could also occur if a resourcehaslimited quantity.)
+1. Mutual Exclusion: Only one process can access a resource at a given time. (Or, more accurately, there is limited access to a resource. A deadlock could also occur if a resource has limited quantity.)
 2. Hold and Wait:Processes already holding a resource can request additional resources, without relinquishing their current resources.
-3. Wo Preemption: One process cannot forcibly remove another process'resource.
+3. No Preemption: One process cannot forcibly remove another process'resource.
 4. Circular Wait: Two or more processes form a circular chain where each process is
 waiting on another resource in the chain.
 

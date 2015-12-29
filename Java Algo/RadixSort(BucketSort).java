@@ -52,13 +52,13 @@ public class RadixSort {
 		}
 	}
 
-	//LSD for number
+	//LSD for number for positive numbers
 	public static void sort(int[] a) {
 		int N = a.length;
 		int R = 256;
 		int[] aux = new int[N];
-		for(int d = 1; d < 4; d++) {
-			int mask = (1 << (8 * d)) - 1;
+		for(int d = 0; d < 4; d++) {
+			int mask = 255 << (8 * d);
 			int[] count = new int[R + 1];
 			for(int i = 0; i < N; i++) 
 				count[(a[i] & mask) + 1]++;
