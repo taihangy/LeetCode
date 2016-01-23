@@ -116,6 +116,15 @@ waiting on another resource in the chain.
 Most deadlock prevention algorithms focus on avoiding condition #4: circular wait.
 */
 
+/*
+Race conditions arise in software when an application depends on the sequence or timing of processes or threads for it to operate properly. As with electronics, there are critical race conditions that result in invalid execution and bugs as well as non-critical race conditions that result in unanticipated behavior. Critical race conditions often happen when the processes or threads depend on some shared state. Operations upon shared states are critical sections that must be mutually exclusive. Failure to obey this rule opens up the possibility of corrupting the shared state.
+
+The memory model defined in the C11 and C++11 standards uses the term "data race" for a critical race condition caused by concurrent reads and writes of a shared memory location. A C or C++ program containing a data race has undefined behavior.[2][3]
+
+Race conditions have a reputation of being difficult to reproduce and debug, since the end result is nondeterministic and depends on the relative timing between interfering threads. Problems occurring in production systems can therefore disappear when running in debug mode, when additional logging is added, or when attaching a debugger, often referred to as a "Heisenbug". It is therefore better to avoid race conditions by careful software design rather than attempting to fix them afterwards.
+https://en.wikipedia.org/wiki/Race_condition#Software
+*/
+
 
 
 
