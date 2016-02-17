@@ -137,3 +137,58 @@ public class Solution {
         return res;
     }
 }
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public List<Integer> closestKValues(TreeNode root, double target, int k) {
+        List<Integer> list = new ArrayList<>();
+        Stack<TreeNode> pred = new Stack<>(), succ = new Stack<>();
+        initStack(pred, succ, root, target);
+        while(k-- > 0){
+            if(succ.isEmpty() || !pred.isEmpty() && target - pred.peek().val < succ.peek().val - target){
+                list.add(pred.peek().val);
+                getPredecessor(pred);
+            }
+            else{//Since N > k, always have something to add
+                list.add(succ.peek().val);
+                getSuccessor(succ);
+            }
+        }
+        return list;
+    }
+    
+    private void initStack(Stack<TreeNode> pred, Stack<TreeNode> succ, TreeNode root, double target){
+        while(root != null){
+            if(root.val <= target){
+                pred.push(root);
+                root = root.right;
+            }
+            else{
+                succ.push(root);
+                root = root.left;
+            }
+        }
+    }
+    private void getPredecessor(Stack<TreeNode> st){
+        TreeNode node = st.pop();
+        if(node.left != null){
+            st.push(node.left);
+            while(st.peek().right != null)  st.push(st.peek().right);
+        }
+    }
+    private void getSuccessor(Stack<TreeNode> st){
+        TreeNode node = st.pop();
+        if(node.right != null){
+            st.push(node.right);
+            while(st.peek().left != null)   st.push(st.peek().left);
+        }
+    }
+}

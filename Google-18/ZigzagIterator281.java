@@ -31,6 +31,42 @@ public class ZigzagIterator {
  * while (i.hasNext()) v[f()] = i.next();
  */
 
+public class ZigzagIterator {
+    private List<Iterator<Integer>> listOfIterators;
+    private int index;
+    
+    public ZigzagIterator(List<Integer> v1, List<Integer> v2) {
+        listOfIterators = new ArrayList<Iterator<Integer>>();
+        listOfIterators.add(v1.iterator());
+        listOfIterators.add(v2.iterator());
+        index = 0;
+    }
+
+    public int next() {
+        int res = -1;
+        if (hasNext()) {
+            res = listOfIterators.get(index).next();
+            index = (index + 1) % 2;
+        }
+        return res;
+    }
+
+    public boolean hasNext() {
+        if (listOfIterators.get(index % 2).hasNext()) return true;
+        else if (listOfIterators.get((index + 1) % 2).hasNext()) {
+            index = (index + 1) % 2;
+            return true;
+        }
+        return false;
+    }
+}
+
+/**
+ * Your ZigzagIterator object will be instantiated and called as such:
+ * ZigzagIterator i = new ZigzagIterator(v1, v2);
+ * while (i.hasNext()) v[f()] = i.next();
+ */
+
 //Follow up
 public class CyclicIterator {
     private List<Integer> list;
